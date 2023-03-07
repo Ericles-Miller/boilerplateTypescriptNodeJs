@@ -18,6 +18,10 @@
         "eslint-plugin-import-helpers"
     ],
     "rules": {
+      "max-len": ["error", { "code": 140 }],
+      "quotes": ["error", "single", { "allowTemplateLiterals": true }],
+      "no-multiple-empty-lines": ["error", { "max": 2, "maxEOF": 1 }],
+      "import-helpers/newline-between": ["error", { "prev": "never", "next": "always" }], // imports
       "camelcase": "off",
       "import/no-unresolved": "error",
       "@typescript-eslint/naming-convention": [
