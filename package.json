@@ -1,0 +1,21 @@
+{
+  "name": "boilerplateTypescriptNodeJs",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/Ericles-Miller/boilerplateTypescriptNodeJs.git",
+  "author": "Ericles-Miller <ericlesmiller15@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.54.1",
+    "@typescript-eslint/parser": "^6.0.0-alpha.69",
+    "eslint": "^8.35.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-import-resolver-typescript": "^3.5.3",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-import-helpers": "^1.3.1",
+    "typescript": "^4.9.5"
+  }
+}
