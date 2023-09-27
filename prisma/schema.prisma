@@ -92,26 +92,24 @@ model Products {
 }
 
 model ItemOrdes {
-  id             String        @id @default(uuid()) @map("_id")
-  productId      String
-  amount         Int
-  products       Products      @relation(fields: [productId], references: [id])
-  orderId        String
+  id        String   @id @default(uuid()) @map("_id")
+  productId String
+  amount    Int
+  products  Products @relation(fields: [productId], references: [id])
+  orderId   String
 
-  shoppingCartId String
-  shoppingCart   ShoppingCarts @relation(fields: [shoppingCartId], references: [id])
+  ShoppingCarts ShoppingCarts[]
 
   @@map("itemOrders")
 }
 
 model Orders {
-  id           String      @id @default(uuid()) @map("_id")
-  createdAt    DateTime    @default(now())
-  deliveryDate DateTime
-  status       Boolean     @default(false)
-  itemOrderId  String
+  id             String        @id @default(uuid()) @map("_id")
+  createdAt      DateTime      @default(now())
+  deliveryDate   DateTime
+  status         Boolean       @default(false)
+  itemOrderId    String
   shoppingCartId String
-  shoppingCart   ShoppingCarts @relation(fields: [shoppingCartId], references: [id])
 
   addressId String
   address   Address @relation(fields: [addressId], references: [id])
@@ -124,6 +122,7 @@ model ShoppingCarts {
   userId       String
   users        Users     @relation(fields: [userId], references: [id])
   itensOrderId String
+  itemsOrders  ItemOrdes @relation(fields: [itensOrderId], references: [id])
 
   @@map("shoppinCart")
 }
