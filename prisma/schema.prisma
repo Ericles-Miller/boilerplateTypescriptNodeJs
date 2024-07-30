@@ -1,72 +1,21 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "mongodb"
+  provider = "sqlserver"
   url      = env("DATABASE_URL")
 }
 
+model Test {
+  id   String @id @default(uuid())
+  name String
+}
+
 model Users {
-  id        String   @id @default(uuid()) @map("_id")
-  name      String
-  email     String   @unique
-  password  String
-  createdAt DateTime @default(now())
-  avatar    String
-  addressId String
-  address   Address  @relation(fields: [addressId], references: [id])
+  id    String @id @default(uuid())
+  email String @unique
+  name  String
 
   @@map("users")
 }
-
-model Address {
-  id           String  @id @default(uuid()) @map("_id")
-  street       String
-  number       String
-  cep          Int
-  city         String
-  neighborhood String
-  complement   String
-  statesId     String
-  states       States  @relation(fields: [statesId], references: [id])
-  Owner        Owner[]
-  Users        Users[]
-
-  @@map("address")
-}
-
-model States {
-  id      String    @id @default(uuid()) @map("_id")
-  name    String
-  country String
-  Address Address[]
-
-  @@map("states")
-}
-
-model Owners {
-  id         String  @id @default(uuid()) @map("_id")
-  name       String
-  createdAt  String
-  cnpj       Int
-  addressId  String
-  address    Address @relation(fields: [addressId], references: [id])
-  reputation Float
-  avatar     String
-
-  @@map("owner")
-}
-
-model Category {
-  id          String @id @default(uuid()) @map("_id")
-  name        String
-  description String
-  ownerId     String
-  owners      Owners @relation(fields: [ownerId], references: [id])
-}
-
-
